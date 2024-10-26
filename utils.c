@@ -28,7 +28,7 @@ int	ft_putstr(char *s)
 	return (count);
 }
 
-ft_putstrint	ft_putnbr_hex(unsigned int n, char format)
+int	ft_putnbr_hex(unsigned int n, char format)
 {
 	char	hex_result[9];
 	int		i;
