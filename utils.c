@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_auxiliarprintf.c                                :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isabegar <isabegar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 20:37:19 by isabegar          #+#    #+#             */
-/*   Updated: 2024/10/22 20:37:19 by isabegar         ###   ########.fr       */
+/*   Created: 2024/10/28 08:29:24 by isabegar          #+#    #+#             */
+/*   Updated: 2024/10/28 08:29:24 by isabegar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putstr(char *s)
 
 	count = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (*s)
 	{
 		ft_putchar(*s);
@@ -62,8 +62,8 @@ int	ft_putptr(void *ptr)
 	int	count;
 
 	count = 0;
-	ft_putstr("0x");
-	ft_putnbr_hex((unsigned long)ptr, 'x');
+	count += ft_putstr("0x");
+	count += ft_putnbr_hex((unsigned long)ptr, 'x');
 	return (count);
 }
 
@@ -85,11 +85,9 @@ int	ft_putnbr(int n)
 		count++;
 	}
 	if (n >= 10)
-	{
 		count += ft_putnbr(n / 10);
-		count += ft_putchar((n % 10) + '0');
-		count++;
-	}
+	count += ft_putchar((n % 10) + '0');
+	count++;
 	return (count);
 }
 
@@ -99,7 +97,8 @@ int	ft_putnbr_unsigned(unsigned int n)
 
 	count = 0;
 	if (n >= 10)
-		ft_putnbr_unsigned(n / 10, format);
+		ft_putnbr_unsigned(n / 10);
 	ft_putchar((n % 10) + '0');
+	count += 1;
 	return (count);
 }
