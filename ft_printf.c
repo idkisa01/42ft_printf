@@ -28,9 +28,9 @@ int	ft_format(va_list objects, char format)
 	if (format == 's')
 		i += ft_putstr(va_arg(objects, char *));
 	if (format == 'x')
-		i += ft_putnbr_hex(va_arg(objects, unsigned int), 'x');
+		i += ft_putnbr_hex(va_arg(objects, unsigned), 'x');
 	if (format == 'X')
-		i += ft_putnbr_hex(va_arg(objects, unsigned int), 'X');
+		i += ft_putnbr_hex(va_arg(objects, unsigned), 'X');
 	if (format == 'p')
 		i += ft_putptr(va_arg(objects, void *));
 	if (format == 'd' || format == 'i')

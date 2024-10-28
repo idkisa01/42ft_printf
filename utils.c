@@ -18,7 +18,7 @@ int	ft_putstr(char *s)
 
 	count = 0;
 	if (!s)
-		return (0);
+		return (ft_putstr("(null)"));
 	while (*s)
 	{
 		ft_putchar(*s);
@@ -59,11 +59,18 @@ int	ft_putnbr_hex(unsigned int n, char format)
 
 int	ft_putptr(void *ptr)
 {
-	int	count;
+	int					count;
+	uintptr_t	pnum;
 
 	count = 0;
-	count += ft_putstr("0x");
-	count += ft_putnbr_hex((unsigned long)ptr, 'x');
+	pnum = (uintptr_t)ptr;
+	if (ptr == NULL)
+		count += ft_putstr("(nil)");
+	else
+	{
+		count += ft_putstr("0x");
+		count += ft_putnbr_hex(pnum, 'x');
+	}
 	return (count);
 }
 
@@ -87,7 +94,6 @@ int	ft_putnbr(int n)
 	if (n >= 10)
 		count += ft_putnbr(n / 10);
 	count += ft_putchar((n % 10) + '0');
-	count++;
 	return (count);
 }
 
@@ -97,8 +103,7 @@ int	ft_putnbr_unsigned(unsigned int n)
 
 	count = 0;
 	if (n >= 10)
-		ft_putnbr_unsigned(n / 10);
-	ft_putchar((n % 10) + '0');
-	count += 1;
+		count += ft_putnbr_unsigned(n / 10);
+	count += ft_putchar((n % 10) + '0');
 	return (count);
 }

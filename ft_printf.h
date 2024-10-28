@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdint.h> 
 
 int	ft_format(va_list objects, char format);
 int	ft_printf(const char *format, ...);
