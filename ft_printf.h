@@ -20,7 +20,7 @@ int	ft_format(va_list objects, char format);
 int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
-int	ft_putnbr_hex(unsigned int n, char format);
+int	ft_putnbr_hex(unsigned long long n, char c);
 int	ft_putptr(void *ptr);
 int	ft_putnbr(int n);
 int	ft_putnbr_unsigned(unsigned int n);

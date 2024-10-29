@@ -12,12 +12,6 @@
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
 int	ft_format(va_list objects, char format)
 {
 	int	i;
@@ -28,9 +22,9 @@ int	ft_format(va_list objects, char format)
 	if (format == 's')
 		i += ft_putstr(va_arg(objects, char *));
 	if (format == 'x')
-		i += ft_putnbr_hex(va_arg(objects, unsigned), 'x');
+		i += ft_putnbr_hex(va_arg(objects, unsigned int), 'x');
 	if (format == 'X')
-		i += ft_putnbr_hex(va_arg(objects, unsigned), 'X');
+		i += ft_putnbr_hex(va_arg(objects, unsigned int), 'X');
 	if (format == 'p')
 		i += ft_putptr(va_arg(objects, void *));
 	if (format == 'd' || format == 'i')
@@ -61,5 +55,27 @@ int	ft_printf(const char *format, ...)
 		format++;
 	}
 	va_end(objects);
+	return (count);
+}
+
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *s)
+{
+	int	count;
+
+	count = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
+	while (*s)
+	{
+		ft_putchar(*s);
+		s++;
+		count++;
+	}
 	return (count);
 }
