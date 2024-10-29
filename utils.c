@@ -57,23 +57,23 @@ static	int	replace_char(int c)
 
 int	ft_putnbr_hex(unsigned long long n, char c)
 {
-	int	len;
+	int	count;
 
-	len = 0;
+	count = 0;
 	c = replace_char(c);
 	if (n >= 16)
 	{
-		len += ft_putnbr_hex((n / 16), c);
-		len += ft_putnbr_hex((n % 16), c);
+		count += ft_putnbr_hex((n / 16), c);
+		count += ft_putnbr_hex((n % 16), c);
 	}
 	else
 	{
 		if (n >= 10)
-			len += ft_putchar(n - 10 + c);
+			count += ft_putchar(n - 10 + c);
 		else
-			len += ft_putchar(n + '0');
+			count += ft_putchar(n + '0');
 	}
-	return (len);
+	return (count);
 }
 
 int	ft_putptr(void *ptr)
